@@ -7,10 +7,12 @@ MTG Arena Codes is a simple reference page made to help new Magic The Gathering 
 ## Development
 
 ### Dependencies
+
 - Gatsby
 - Yarn
 
 ### Running Locally
+
 ```
 git clone etc.
 cd arena-codes

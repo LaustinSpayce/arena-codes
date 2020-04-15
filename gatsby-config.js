@@ -3,7 +3,7 @@ module.exports = {
     title: `MTG Arena Codes`,
     description: `All online redemption codes for Magic The Gathering: Arena, in one convenient place`,
     author: `@LaustinSpayce`,
-    siteUrl: `https://arena-codes.netlify.com/`
+    siteUrl: `https://arena-codes.netlify.com/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -16,6 +16,17 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-build-date`,
+      options: {
+        formatAsDateString: true,
+        formatting: {
+          format: "dddd D MMMM YYYY",
+          utc: false, // boolean, defaults to false - output time as UTC or not, following date-and-time API
+        },
+      },
+    },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
