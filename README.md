@@ -13,7 +13,8 @@ MTG Arena Codes is a simple reference page made to help new Magic The Gathering 
 git clone etc.
 cd arena-codes
 yarn install
-gatsby develop```
+gatsby develop
+```
 
 localhost:8000
 
