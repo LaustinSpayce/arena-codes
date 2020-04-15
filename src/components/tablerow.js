@@ -1,12 +1,8 @@
-import React, { useState, useRef, useEffect } from "react"
-import Table from "react-bootstrap/Table"
+import React, { useState, useRef } from "react"
 import Button from "react-bootstrap/Button"
 import { FaClipboardCheck } from "react-icons/fa"
-import Overlay from "react-bootstrap/Overlay"
 import OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import Tooltip from "react-bootstrap/Tooltip"
-import Popover from "react-bootstrap/Popover"
-import CardLink from "./carddescription"
 import CardDescription from "./carddescription"
 
 const TableRow = ({ data }) => {
@@ -32,7 +28,7 @@ const TableRow = ({ data }) => {
   function renderTooltip(props) {
     return (
       <Tooltip id="button-tooltip" {...props}>
-        Copied to Clipboard
+        {copied}
       </Tooltip>
     )
   }

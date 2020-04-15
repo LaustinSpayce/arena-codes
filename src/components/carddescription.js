@@ -1,15 +1,11 @@
-import React, { useState, useRef, useEffect } from "react"
+import React from "react"
 
 const SCRYFALL_SEARCH = "https://scryfall.com/search?q="
 const CARDRE = /\[\[([^\]]+)\]\]/g
 
 const CardLink = (cardName) => {
   const fullURL = SCRYFALL_SEARCH + cardName.name
-  return (
-    <a href={fullURL} target="_blank">
-      {cardName.name}
-    </a>
-  )
+  return <a href={fullURL}>{cardName.name}</a>
 }
 
 const CardDescription = (data) => {
