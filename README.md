@@ -1,5 +1,7 @@
 # MTG Arena Codes
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/05a36db5-0fb8-497d-93ae-e8f1cd920338/deploy-status)](https://app.netlify.com/sites/arena-codes/deploys)
+
 MTG Arena Codes is a simple reference page made to help new Magic The Gathering players grab all of the free pack and style codes that WOTC have given out.
 
 ## Development

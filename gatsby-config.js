@@ -3,6 +3,7 @@ module.exports = {
     title: `MTG Arena Codes`,
     description: `All online redemption codes for Magic The Gathering: Arena, in one convenient place`,
     author: `@LaustinSpayce`,
+    siteUrl: `https://arena-codes.netlify.com/`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
