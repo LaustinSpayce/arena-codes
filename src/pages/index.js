@@ -42,8 +42,8 @@ const IndexPage = ({ data }) => {
         <Alert.Heading>How to redeem promo codes</Alert.Heading>
         <p>
           <ol>
-            <li>Open the 'store' tab in MTGA</li>
-            <li>In the top-right corner, click "Redeem Code"</li>
+            <li>Open the 'Store' tab in MTGA</li>
+            <li>In the top-right corner, click 'Redeem Code'</li>
             <li>Enter one of the codes from below.</li>
           </ol>
         </p>
