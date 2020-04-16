@@ -9,8 +9,9 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 import Container from "react-bootstrap/Container"
-
+import Footer from "./footer"
 import Header from "./header"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -29,7 +30,7 @@ const Layout = ({ children }) => {
       <Container>
         <main>{children}</main>
       </Container>
-      <footer></footer>
+      <Footer />
     </>
   )
 }

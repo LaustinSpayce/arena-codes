@@ -7,7 +7,6 @@ import Table from "react-bootstrap/Table"
 import TableRow from "../components/tablerow"
 import Button from "react-bootstrap/Button"
 import Alert from "react-bootstrap/Alert"
-import "bootstrap/dist/css/bootstrap.min.css"
 
 const IndexPage = ({ data }) => {
   const [alertShow, setAlertShow] = useState(false)
