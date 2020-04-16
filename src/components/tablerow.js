@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react"
 import Button from "react-bootstrap/Button"
 import { FaClipboardCheck } from "react-icons/fa"
-import OverlayTrigger from "react-bootstrap/OverlayTrigger"
+import Overlay from "react-bootstrap/Overlay"
 import Tooltip from "react-bootstrap/Tooltip"
 import CardDescription from "./carddescription"
 
@@ -25,37 +25,26 @@ const TableRow = ({ data }) => {
       })
   }
 
-  function renderTooltip(props) {
-    return (
-      <Tooltip id="button-tooltip" {...props}>
-        {copied}
-      </Tooltip>
-    )
-  }
-
-  function renderNothing() {
-    return <div></div>
-  }
-
   return (
     <tr>
       <td>
         {data.Code}
-        <OverlayTrigger
-          placement="right"
-          trigger="click"
-          overlay={show ? renderTooltip : renderNothing}
+        <Button
+          ref={target}
+          style={{ float: "right" }}
+          size="sm"
+          variant="outline-primary"
+          onClick={CopyToClipboard}
         >
-          <Button
-            ref={target}
-            style={{ float: "right" }}
-            size="sm"
-            variant="outline-primary"
-            onClick={CopyToClipboard}
-          >
-            <FaClipboardCheck />
-          </Button>
-        </OverlayTrigger>
+          <FaClipboardCheck />
+        </Button>
+        <Overlay target={target.current} show={show} placement="right">
+          {(props) => (
+            <Tooltip id="button-tooltip" {...props}>
+              {copied}
+            </Tooltip>
+          )}
+        </Overlay>
       </td>
       <td>
         <CardDescription description={data.Description} />

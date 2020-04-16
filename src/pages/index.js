@@ -1,18 +1,19 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
+import Img from "gatsby-image"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import "bootstrap/dist/css/bootstrap.min.css"
 import Table from "react-bootstrap/Table"
 import TableRow from "../components/tablerow"
 import Button from "react-bootstrap/Button"
 import Alert from "react-bootstrap/Alert"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 const IndexPage = ({ data }) => {
   const [alertShow, setAlertShow] = useState(false)
 
-  const tableRows = data.allCodesCsv.nodes.map((entry) => {
-    return <TableRow data={entry} />
+  const tableRows = data.allCodesCsv.nodes.map((entry, index) => {
+    return <TableRow data={entry} key={index} />
   })
 
   const buttonClick = () => {
@@ -42,10 +43,11 @@ const IndexPage = ({ data }) => {
         <Alert.Heading>How to redeem promo codes</Alert.Heading>
         <p>
           <ol>
-            <li>Open the 'Store' tab in MTGA</li>
-            <li>In the top-right corner, click 'Redeem Code'</li>
-            <li>Enter one of the codes from below.</li>
+            <li key="step-1">Open the 'Store' tab in MTGA</li>
+            <li key="step-2">In the top-right corner, click 'Redeem Code'</li>
+            <li key="step-3">Enter one of the codes from below.</li>
           </ol>
+          <Img fluid={data.file.childImageSharp.fluid} />
         </p>
       </Alert>
       <div className="m-4"></div>
@@ -76,6 +78,13 @@ export const data = graphql`
     }
     currentBuildDate {
       currentDate
+    }
+    file(relativePath: { eq: "store.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1068) {
+          ...GatsbyImageSharpFluid
+        }
+      }
     }
   }
 `
