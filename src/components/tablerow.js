@@ -9,6 +9,8 @@ const TableRow = ({ data }) => {
   const [copied, setCopied] = useState("copy")
   const [show, setShow] = useState(false)
   const target = useRef(null)
+  const expiryDate = new Date(data.Expiry)
+  const addedDate = new Date(data.Date_Added)
 
   function CopyToClipboard() {
     setShow(true)
@@ -36,11 +38,12 @@ const TableRow = ({ data }) => {
           variant="outline-primary"
           onClick={CopyToClipboard}
         >
-          <FaClipboardCheck 
-          style={{
-            position: 'relative',
-            top: '-3px',
-          }}/>
+          <FaClipboardCheck
+            style={{
+              position: "relative",
+              top: "-3px",
+            }}
+          />
         </Button>
         <Overlay target={target.current} show={show} placement="right">
           {(props) => (
@@ -53,8 +56,12 @@ const TableRow = ({ data }) => {
       <td>
         <CardDescription description={data.Description} />
       </td>
-      <td>{data.Expiry}</td>
-      <td>{data.Date_Added}</td>
+      <td>
+        {expiryDate.getTime() === expiryDate.getTime()
+          ? expiryDate.toDateString()
+          : ""}
+      </td>
+      <td>{addedDate.toDateString()}</td>
     </tr>
   )
 }
