@@ -36,7 +36,11 @@ const TableRow = ({ data }) => {
           variant="outline-primary"
           onClick={CopyToClipboard}
         >
-          <FaClipboardCheck />
+          <FaClipboardCheck 
+          style={{
+            position: 'relative',
+            top: '-3px',
+          }}/>
         </Button>
         <Overlay target={target.current} show={show} placement="right">
           {(props) => (
