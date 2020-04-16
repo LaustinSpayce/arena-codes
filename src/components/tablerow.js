@@ -9,7 +9,7 @@ const TableRow = ({ data }) => {
   const [copied, setCopied] = useState("copy")
   const [show, setShow] = useState(false)
   const target = useRef(null)
-  const expiryDate = new Date(data.Expiry)
+  const expiryDate = new Date(data.Date_Expiry)
   const addedDate = new Date(data.Date_Added)
 
   function CopyToClipboard() {
@@ -57,9 +57,9 @@ const TableRow = ({ data }) => {
         <CardDescription description={data.Description} />
       </td>
       <td>
-        {expiryDate.getTime() === expiryDate.getTime()
-          ? expiryDate.toDateString()
-          : ""}
+        {isNaN(expiryDate.getTime())
+          ? "TBD"
+          : expiryDate.toDateString()}
       </td>
       <td>{addedDate.toDateString()}</td>
     </tr>

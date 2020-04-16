@@ -67,12 +67,12 @@ const IndexPage = ({ data }) => {
 
 export const data = graphql`
   query MyQuery {
-    allCodesCsv {
+    allCodesCsv(sort: { fields: Date_Added, order: DESC }) {
       nodes {
         Code
-        Date_Added
         Description
-        Expiry
+        Date_Added
+        Date_Expiry
       }
     }
     currentBuildDate {
