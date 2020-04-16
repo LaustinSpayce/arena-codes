@@ -11,8 +11,7 @@ const CARDRE = /\[\[([^\]]+)\]\]/g
 const CardLink = (card) => {
   const [cardName, setCardName] = useState(card.name)
   const [setName, setSetName] = useState("")
-  const target = useRef(null)
-
+  const placement = card.placement ? card.placement : 'top'
   useEffect(() => {
     if (cardName.includes("|")) {
       let substrings = cardName.split("|")
@@ -39,7 +38,7 @@ const CardLink = (card) => {
 
   return (
     <>
-      <OverlayTrigger key={cardName} placement="top" overlay={popover}>
+      <OverlayTrigger key={cardName} placement={placement} overlay={popover}>
         <a href={fullURL}>{cardName}</a>
       </OverlayTrigger>
     </>
@@ -62,7 +61,7 @@ const CardDescription = (data) => {
       return (
         <>
           {preCard}
-          <CardLink name={cardName} key={cardLinkKey} />
+          <CardLink name={cardName} key={cardLinkKey} placement={data.placement}/>
         </>
       )
     })
