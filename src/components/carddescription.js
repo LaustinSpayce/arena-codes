@@ -1,12 +1,11 @@
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import OverlayTrigger from "react-bootstrap/OverlayTrigger"
-import Overlay from "react-bootstrap/Overlay"
 import Popover from "react-bootstrap/Popover"
 
 const SCRYFALL_SEARCH = "https://scryfall.com/search?q="
 const SCRYFALL_IMAGE =
   "https://api.scryfall.com/cards/named?format=image&version=medium&exact="
-const CARDRE = /\[\[([^\]]+)\]\]/g
+const CARDRE = /\[\[([^\]]+)\]\]/
 
 const CardLink = (card) => {
   const [cardName, setCardName] = useState(card.name)
@@ -46,22 +45,22 @@ const CardLink = (card) => {
 }
 
 const CardDescription = (data) => {
-  const cardsArray = data.description.match(CARDRE)
+  let cardsArray = data.description.match(CARDRE)
   let descriptionString = data.description
   let description = data.description
   if (cardsArray) {
+    // Remove the first element of the array as it contains all the matches.
+    cardsArray.shift()
     description = cardsArray.map((card, ix) => {
-      let cardName = card.replace("[[", "")
-      cardName = cardName.replace("]]", "")
       let index = descriptionString.search(CARDRE)
       let preCard = descriptionString.slice(0, index)
       descriptionString = descriptionString.slice(index)
-      descriptionString = descriptionString.replace("[[" + cardName + "]]", "")
+      descriptionString = descriptionString.replace("[[" + card + "]]", "")
       let cardLinkKey = card + ix
       return (
         <>
           {preCard}
-          <CardLink name={cardName} key={cardLinkKey} placement={data.placement}/>
+          <CardLink name={card} key={cardLinkKey} placement={data.placement}/>
         </>
       )
     })
