@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import OverlayTrigger from "react-bootstrap/OverlayTrigger"
 import Popover from "react-bootstrap/Popover"
 
-const SCRYFALL_SEARCH = "https://scryfall.com/search?q="
+const SCRYFALL_SEARCH = "https://api.scryfall.com/cards/named?format=json&exact="
 const SCRYFALL_IMAGE =
   "https://api.scryfall.com/cards/named?format=image&version=medium&exact="
 const CARDRE = /\[\[([^\]]+)\]\]/
@@ -10,17 +10,25 @@ const CARDRE = /\[\[([^\]]+)\]\]/
 const CardLink = (card) => {
   const [cardName, setCardName] = useState(card.name)
   const [setName, setSetName] = useState("")
+  const [apiURL, setApiURL] = useState(SCRYFALL_SEARCH)
+  const [imageURL, setImageURL] = useState("")
+  const [linkURL, setLinkURL] = useState("")
   const placement = card.placement ? card.placement : 'top'
-  useEffect(() => {
-    if (cardName.includes("|")) {
-      let substrings = cardName.split("|")
-      setCardName(substrings[0])
-      setSetName("&set=" + substrings[1])
+  
+  useEffect( () => {
+    async function fetchData () {
+      if (cardName.includes("|")) {
+        let substrings = cardName.split("|")
+        setCardName(substrings[0])
+        setSetName("&set=" + substrings[1])
+      }
+      const fetcher = await fetch(apiURL + cardName + setName)
+      const response = await fetcher.json()
+      setLinkURL(response.scryfall_uri)
+      setImageURL(SCRYFALL_IMAGE + cardName + setName)
     }
+    fetchData()
   }, [cardName])
-
-  const fullURL = SCRYFALL_SEARCH + cardName + setName
-  const imageURL = SCRYFALL_IMAGE + cardName + setName
 
   const popover = (
     <Popover id="popover-basic" style={{ maxWidth: "100%" }}>
@@ -38,7 +46,7 @@ const CardLink = (card) => {
   return (
     <>
       <OverlayTrigger key={cardName} placement={placement} overlay={popover}>
-        <a href={fullURL}>{cardName}</a>
+        <a href={linkURL}>{cardName}</a>
       </OverlayTrigger>
     </>
   )
