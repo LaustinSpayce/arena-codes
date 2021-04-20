@@ -44,7 +44,8 @@ const IndexPage = ({ data }) => {
           <ol>
             <li key="step-1">Open the 'Store' tab in MTGA</li>
             <li key="step-2">In the top-right corner, click 'Redeem Code'</li>
-            <li key="step-3">Enter one of the codes from below.</li>
+            <li key="step-3">Enter one of the codes from below and press enter</li>
+            <li key="step-4">If accepted you will see a confirmation message</li>
           </ol>
           <Img fluid={data.storeImage.childImageSharp.fluid} />
         </p>
@@ -54,7 +55,7 @@ const IndexPage = ({ data }) => {
             <li key="step-1">Go to <a href="http://myaccounts.wizards.com" target="_blank" rel="noreferrer">myaccounts.wizards.com</a></li>
             <li key="step-2">Sign in to your account</li>
             <li key="step-3">On the right, click <i>Redeem A Code</i></li>
-            <li key="step-4">Enter the code in the box and click redeem</li>
+            <li key="step-4">Enter one of the codes from below and click Redeem</li>
             <li key="step-5">If accepted you will see a confirmation message</li>
           </ol>
           <Img fluid={data.webImage.childImageSharp.fluid} />
