@@ -46,17 +46,18 @@ const IndexPage = ({ data }) => {
             <li key="step-2">In the top-right corner, click 'Redeem Code'</li>
             <li key="step-3">Enter one of the codes from below.</li>
           </ol>
-          <Img fluid={data.file.childImageSharp.fluid} />
+          <Img fluid={data.storeImage.childImageSharp.fluid} />
         </p>
         <p>
           <h3>How to redeem promo codes on mobile</h3>
           <ol>
-            <li key="step-1">Go to <a href="http://myaccounts.wizards.com" target="_blank">myaccounts.wizards.com</a></li>
+            <li key="step-1">Go to <a href="http://myaccounts.wizards.com" target="_blank" rel="noreferrer">myaccounts.wizards.com</a></li>
             <li key="step-2">Sign in to your account</li>
             <li key="step-3">On the right, click <i>Redeem A Code</i></li>
             <li key="step-4">Enter the code in the box and click redeem</li>
             <li key="step-5">If accepted you will see a confirmation message</li>
           </ol>
+          <Img fluid={data.webImage.childImageSharp.fluid} />
         </p>
       </Alert>
       <div className="m-4"></div>
@@ -88,10 +89,19 @@ export const data = graphql`
     currentBuildDate {
       currentDate
     }
-    file(relativePath: { eq: "store.jpg" }) {
+    storeImage: file(relativePath: { eq: "store.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1068) {
+        fluid(maxWidth: 1800) {
           ...GatsbyImageSharpFluid
+          ...GatsbyImageSharpFluidLimitPresentationSize
+        }
+      }
+    }
+    webImage: file(relativePath: { eq: "web-redeem.png" }) {
+      childImageSharp {
+        fluid(maxWidth: 480) {
+          ...GatsbyImageSharpFluid
+          ...GatsbyImageSharpFluidLimitPresentationSize
         }
       }
     }
