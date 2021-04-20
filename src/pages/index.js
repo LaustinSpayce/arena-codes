@@ -39,7 +39,7 @@ const IndexPage = ({ data }) => {
         className="my-4"
         dismissable
       >
-        <Alert.Heading>How to redeem promo codes</Alert.Heading>
+        <Alert.Heading>How to redeem promo codes on PC/Mac</Alert.Heading>
         <p>
           <ol>
             <li key="step-1">Open the 'Store' tab in MTGA</li>
@@ -47,6 +47,16 @@ const IndexPage = ({ data }) => {
             <li key="step-3">Enter one of the codes from below.</li>
           </ol>
           <Img fluid={data.file.childImageSharp.fluid} />
+        </p>
+        <p>
+          <h3>How to redeem promo codes on mobile</h3>
+          <ol>
+            <li key="step-1">Go to <a href="http://myaccounts.wizards.com" target="_blank">myaccounts.wizards.com</a></li>
+            <li key="step-2">Sign in to your account</li>
+            <li key="step-3">On the right, click <i>Redeem A Code</i></li>
+            <li key="step-4">Enter the code in the box and click redeem</li>
+            <li key="step-5">If accepted you will see a confirmation message</li>
+          </ol>
         </p>
       </Alert>
       <div className="m-4"></div>
