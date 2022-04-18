@@ -65,7 +65,7 @@ const IndexPage = ({ data }) => {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th>Code</th>
+            <th style="{{font-family: Tahoma}}" >Code</th>
             <th>Description</th>
             <th>Expires</th>
             <th>Date Added</th>
