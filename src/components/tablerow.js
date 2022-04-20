@@ -29,7 +29,7 @@ const TableRow = ({ data }) => {
 
   return (
     <tr>
-      <td>
+      <td style={{fontFamily: "Tahoma"}}>
         {data.Code}
         <Button
           ref={target}
