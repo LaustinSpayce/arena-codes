@@ -29,7 +29,7 @@ const TableRow = ({ data }) => {
 
   return (
     <tr>
-      <td>
+      <td style={{ fontFamily: "Tahoma" }}>
         {data.Code}
         <Button
           ref={target}
@@ -46,7 +46,7 @@ const TableRow = ({ data }) => {
           />
         </Button>
         <Overlay target={target.current} show={show} placement="right">
-          {(props) => (
+          {props => (
             <Tooltip id="button-tooltip" {...props}>
               {copied}
             </Tooltip>
@@ -56,11 +56,7 @@ const TableRow = ({ data }) => {
       <td>
         <CardDescription description={data.Description} />
       </td>
-      <td>
-        {isNaN(expiryDate.getTime())
-          ? "TBD"
-          : expiryDate.toDateString()}
-      </td>
+      <td>{isNaN(expiryDate.getTime()) ? "TBD" : expiryDate.toDateString()}</td>
       <td>{addedDate.toDateString()}</td>
     </tr>
   )
