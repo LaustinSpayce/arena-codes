@@ -25,5 +25,3 @@ localhost:8000
 ### Updating information
 
 If WOTC have issued a new code and it is not reflected on the site yet. Simply submit a pull request, editing the file `src/data/codes.csv`
-
-yay
